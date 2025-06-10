@@ -4,7 +4,7 @@ set -e  # Exit immediately if a command exits with a non-zero status
 # Set AWS region explicitly
 AWS_REGION="ap-south-1"
 CLUSTER_NAME="todo_services_test"
-SERVICE_NAME="todo_service_main_v1"
+SERVICE_NAME="todo_service_main_v2"
 
 echo "Creating ECS task definition..."
 

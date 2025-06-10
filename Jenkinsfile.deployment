@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Deploy as a task') {
+            steps {
+                echo "Task deploy starting..."
+                withCredentials([
+                    [
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        credentialsId: 'aws-creds',
+                        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                    ]
+                ]) {
+                    sh "chmod +x ./aws.sh"
+                    sh "./aws.sh"
+                }
+                
+                echo "Deployment completed"
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo "Pipeline executed successfully!"
+        }
+        failure {
+            echo "Pipeline failed"
+        }
+    }
+}

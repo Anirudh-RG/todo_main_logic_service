@@ -2,7 +2,7 @@ const axios = require('axios');
 const todoModel = require('../models/todoModel');
 const cron = require('node-cron');
 
-const EMAIL_SERVICE_URL = 'http://localhost:3001';
+const EMAIL_SERVICE_URL = process.env.EMAIL_SERVICE_URL;
 
 // Update the processReminders function in services/reminderService.js
 const processReminders = async () => {

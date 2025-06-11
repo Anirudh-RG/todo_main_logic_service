@@ -9,6 +9,11 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.get('/todos/hi',(req,res)=>{
+  res.status(200).json({message:'The server says hello'});
+})
+
 app.get('/todos/health', (req, res) => {
   res.status(200).json({ message: 'Todo Service is healthy' });
 });
